@@ -1,0 +1,10 @@
+1  Classic Burger       Beef patty, lettuce, tomato       8.99
+2  Margherita Pizza     Tomato sauce, basil, mozzarella   12.50
+3  Grilled Salmon       Lemon butter sauce, vegetables    16.75
+4  Caesar Salad         Romaine, croutons, parmesan       7.25
+5  Chicken Alfredo      Fettuccine, grilled chicken       13.99
+6  Vegetable Stir-Fry   Fresh vegetables, teriyaki sauce  10.50
+7  New York Cheesecake  Rich, graham cracker crust        6.75
+8  Mango Smoothie       Mango, yogurt, honey              4.25
+9  Loaded Nachos        Beef, cheese, salsa, guacamole    9.99
+10 Chocolate Lava Cake  Molten chocolate center           7.50
