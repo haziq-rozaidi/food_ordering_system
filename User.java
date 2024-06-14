@@ -17,7 +17,7 @@ public abstract class User {
                 while (sc.hasNextLine()) {
                     String line = sc.nextLine();
                     String[] details = line.split(",");
-                    if (details[1].equals(userName) && details[3].equals(password)) {
+                    if (details[1].equals(userName) && details[2].equals(password)) {
                         System.out.println("Customer login successful!");
                         return;
                     }
@@ -32,7 +32,7 @@ public abstract class User {
                 while (sc.hasNextLine()) {
                     String line = sc.nextLine();
                     String[] details = line.split(",");
-                    if (details[1].equals(userName) && details[3].equals(password)) {
+                    if (details[1].equals(userName) && details[2].equals(password)) {
                         System.out.println("Restaurant login successful!");
                         return;
                     }

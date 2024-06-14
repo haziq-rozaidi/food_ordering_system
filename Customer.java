@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class Customer extends User implements Orderable {
     private String email;
@@ -11,6 +12,7 @@ public class Customer extends User implements Orderable {
 
     public Customer(String userName, String email, String phoneNumber, String birthDay) {
         this.userType = 1;
+        this.userID = UUID.randomUUID().toString();
         this.userName = userName;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -23,7 +25,7 @@ public class Customer extends User implements Orderable {
     public void register() {
         // appends to file
         try (FileWriter writer = new FileWriter("CustomerDetail.txt", true)) {
-            writer.write(userName + "," + password + "," + email + "," + phoneNumber + "," + birthDay + "\n");
+            writer.write(userID + ","+ userName + "," + password + "," + email + "," + phoneNumber + "," + birthDay + "\n");
             System.out.println("Customer Registration Successful!");
         } 
         catch (IOException e) {
@@ -63,7 +65,7 @@ public class Customer extends User implements Orderable {
 
         try (Scanner scanner = new Scanner(file)) {
             System.out.println("Menu for " + restaurantName + ":");
-            
+
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] menuDetails = line.split(",");
