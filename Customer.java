@@ -4,16 +4,18 @@ import java.util.Scanner;
 import java.util.UUID;
 
 public class Customer extends User implements Orderable {
+    private String custName;
     private String email;
     private String phoneNumber;
     private String birthDay;
     private ArrayList<MenuItem> cart;
     private ArrayList<Order> orderHistory;
 
-    public Customer(String userName, String email, String phoneNumber, String birthDay) {
+    public Customer(String custName, String email, String phoneNumber, String birthDay) {
         this.userType = 1;
+        //generates a unique identifier
         this.userID = UUID.randomUUID().toString();
-        this.userName = userName;
+        this.custName = custName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.birthDay = birthDay;
@@ -25,7 +27,7 @@ public class Customer extends User implements Orderable {
     public void register() {
         // appends to file
         try (FileWriter writer = new FileWriter("CustomerDetail.txt", true)) {
-            writer.write(userID + ","+ userName + "," + password + "," + email + "," + phoneNumber + "," + birthDay + "\n");
+            writer.write(userID + ","+ userName + "," + password + "," + custName + "," + email + "," + phoneNumber + "," + birthDay + "\n");
             System.out.println("Customer Registration Successful!");
         } 
         catch (IOException e) {
