@@ -1,17 +1,54 @@
-public abstract class User{
-    private String userID;
-    private String userName;
-    private String password;
+import java.io.*;
+import java.util.Scanner;
 
-    public void login(int type, String userName, String password) throws Exception{
-        if(type == 1){
-        }
+public abstract class User {
+    protected int userType;
+    protected String userID;
+    protected String userName;
+    protected String password;
 
-        else if (type == 2){
-        }
+    public void login(int userType, String userName, String password) {
+        Scanner sc = null;
+        try {
+            if (userType == 1) {
+                File file = new File("CustomerDetail.txt");
+                sc = new Scanner(file);
+                
+                while (sc.hasNextLine()) {
+                    String line = sc.nextLine();
+                    String[] details = line.split(",");
+                    if (details[1].equals(userName) && details[3].equals(password)) {
+                        System.out.println("Customer login successful!");
+                        return;
+                    }
+                }
+                System.out.println("Customer login failed!");
+            } 
+            
+            else if (userType == 2) {
+                File file = new File("RestaurantDetail.txt");
+                sc = new Scanner(file);
+                
+                while (sc.hasNextLine()) {
+                    String line = sc.nextLine();
+                    String[] details = line.split(",");
+                    if (details[1].equals(userName) && details[3].equals(password)) {
+                        System.out.println("Restaurant login successful!");
+                        return;
+                    }
+                }
+                System.out.println("Restaurant login failed!");
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + e.getMessage());
+        } 
         
-        this.userName = userName;
-        this.password = password;
+        finally {
+            if (sc != null) {
+                sc.close();
+            }
+        }
     }
 
     public abstract void register();
