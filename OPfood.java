@@ -39,6 +39,7 @@ public class OPfood{
                 System.out.println("Choose a restaurant to browse its menu:");
                 System.out.println("1. Thaib");
                 System.out.println("2. Pluto");
+                // add new menu for browse
                 System.out.print("Enter the number of the restaurant: ");
                 int restaurantChoice = scanner.nextInt();
                 scanner.nextLine(); // Consume the newline character
