@@ -1,1 +1,3 @@
-customer detail file
+--------------------------------------------------
+-- userName,password,email,phoneNumber,birthDay --
+--------------------------------------------------

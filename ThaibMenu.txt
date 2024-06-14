@@ -1,10 +1,14 @@
-1  Pad Thai              Rice noodles, shrimp, peanuts      12.95
-2  Fajitas Platter       Steak/chicken, peppers, onions     14.99
-3  Sushi Combo           Nigiri, maki rolls                 18.75
-4  Vegetarian Lasagna    Pasta, marinara, vegetables        11.50
-5  Fish and Chips        Beer-battered cod, french fries    13.25
-6  Greek Salad           Lettuce, feta, Greek dressing      9.75
-7  Chicken Tikka Masala  Creamy tomato curry, basmati rice  15.50
-8  Spinach Feta Wrap     Spinach, feta, whole wheat wrap    8.25
-9  Tres Leches Cake      Milk-soaked sponge cake            6.99
-10 Lemon Iced            TeaZesty lemon flavor              3.50
+-----------------------------------------
+-- Number,Food Name, Desciption, Price --
+-----------------------------------------
+
+1,Pad Thai,Rice noodles with shrimp and peanuts,12.95
+2,Fajitas Platter,Steak/chicken with peppers and onions,14.99
+3,Sushi Combo,Nigiri and maki rolls,18.75
+4,Vegetarian Lasagna,Pasta with marinara and vegetables,11.50
+5,Fish and Chips,Beer-battered cod with french fries,13.25
+6,Greek Salad, Lettuce and feta with Greek dressing,9.75
+7,Chicken Tikka Masala,Creamy tomato curry with basmati rice,15.50
+8,Spinach Feta Wrap,Spinach and feta with whole wheat wrap,8.25
+9,Tres Leches Cake,Milk-soaked sponge cake, 6.99
+10,Lemon Iced,TeaZesty lemon flavor,3.50

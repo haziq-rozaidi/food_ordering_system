@@ -1,3 +1,3 @@
 public interface Orderable{
-    public void browseMenu();
+    public void browseMenu(String restaurantName);
 }
