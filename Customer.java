@@ -72,15 +72,15 @@ public class Customer extends User implements Orderable {
                 String line = scanner.nextLine();
                 String[] menuDetails = line.split(",");
                 if (menuDetails.length == 4) {
-                    System.out.println("Number: " + menuDetails[0] + ", Name: " + menuDetails[1] + 
-                                       ", Description: " + menuDetails[2] + ", Price: " + menuDetails[3]);
+                    System.out.println("Item ID: " + menuDetails[0] + ", Item Name: " + menuDetails[1] + 
+                                       ", Description: " + menuDetails[2] + ", Item Price: " + menuDetails[3]);
                 } 
                 else {
                     System.out.println("Invalid menu entry: " + line);
                 }
             }
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred while reading the menu.");
+            System.out.println("An error occurred while reading the menu");
             e.printStackTrace();
         }
     }

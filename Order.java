@@ -17,11 +17,10 @@ public class Order{
         return "OD" + System.currentTimeMillis();
     }
 
-    private double calculateTotalAmount(ArrayList<MenuItem> items) {
+    public double calculateTotalAmount(ArrayList<MenuItem> items) {
         double total = 0.00;
-        int i;
-        for(i = 0; i < items.size(); i++){
-            total += items.get(i).getPrice();
+        for (MenuItem item : items) {
+            total += item.getPrice();
         }
         return total;
     }
