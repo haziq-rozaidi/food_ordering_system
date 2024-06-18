@@ -30,23 +30,23 @@ public class Restaurant extends User implements Orderable {
     public void addMenu() {
         Scanner input = new Scanner(System.in);
 
-        System.out.println("Enter item ID:");
+        System.out.print("Enter item ID:");
         String itemID = input.nextLine();
 
-        System.out.println("Enter item name:");
+        System.out.print("Enter item name:");
         String itemName = input.nextLine();
 
-        System.out.println("Enter item description:");
+        System.out.print("Enter item description: ");
         String description = input.nextLine();
 
-        System.out.println("Enter item price:");
+        System.out.print("Enter item price: ");
         double price = input.nextDouble();
 
         try (FileWriter writer = new FileWriter(this.restaurantName + ".txt", true)) {
             writer.write(itemID + "," + itemName + "," + description + "," + price + "\n");
-            System.out.println("Menu item added: " + itemName);
+            System.out.println("Menu item added");
         } catch (IOException e) {
-            System.out.println("An error occurred while adding the menu item.");
+            System.out.println("An error occurred while adding the menu item");
             e.printStackTrace();
         }
         input.close();
