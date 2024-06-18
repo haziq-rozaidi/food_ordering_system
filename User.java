@@ -7,7 +7,7 @@ public abstract class User {
     protected String userName;
     protected String password;
 
-    public void login(int userType, String userName, String password) {
+    public boolean login(int userType, String userName, String password) {
         Scanner sc = null;
         try {
             if (userType == 1) {
@@ -19,7 +19,7 @@ public abstract class User {
                     String[] details = line.split(",");
                     if (details[1].equals(userName) && details[2].equals(password)) {
                         System.out.println("Customer login successful!");
-                        return;
+                        return true;
                     }
                 }
                 System.out.println("Customer login failed!");
@@ -34,7 +34,7 @@ public abstract class User {
                     String[] details = line.split(",");
                     if (details[1].equals(userName) && details[2].equals(password)) {
                         System.out.println("Restaurant login successful!");
-                        return;
+                        return true;
                     }
                 }
                 System.out.println("Restaurant login failed!");
@@ -49,6 +49,7 @@ public abstract class User {
                 sc.close();
             }
         }
+        return false;
     }
 
     public abstract void register();
