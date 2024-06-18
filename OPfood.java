@@ -84,7 +84,8 @@ public class OPfood {
                                         System.out.print("Enter item name to add to cart: ");
                                         String item = scanner.nextLine();
                                         customer.addToCart(item);
-                                    } else if (action == 2) {
+                                    } 
+                                    else if (action == 2) {
                                         customer.viewCart();
 
                                         boolean runCartAction = true;
@@ -97,33 +98,41 @@ public class OPfood {
                                                 System.out.print("Enter item name to remove from cart: ");
                                                 String item = scanner.nextLine();
                                                 customer.removeFromCart(item);
-                                            } else if (cartAction == 2) {
+                                            } 
+                                            else if (cartAction == 2) {
                                                 customer.placeOrder();
                                                 runCartAction = false;
-                                            } else {
+                                            } 
+                                            else {
                                                 System.out.println("Invalid cart action input");
                                             }
                                         }
-                                    } else if (action == 3) {
+                                    } 
+                                    else if (action == 3) {
                                         for (Order order : customer.viewOrderHistory()) {
                                             for (MenuItem item : order.getItems()) {
                                                 System.out.println("Ordered item: " + item.getItemName() + ", Price: " + item.getPrice());
                                             }
                                         }
-                                    } else if (action == 4) {
+                                    } 
+                                    else if (action == 4) {
                                         System.out.println("Logging out");
                                         runAction = false;
-                                    } else {
+                                    } 
+                                    else {
                                         System.out.println("Invalid action input");
                                     }
                                 }
-                            } else {
+                            } 
+                            else {
                                 System.out.println("Invalid username or password");
                             }
-                        } else {
+                        } 
+                        else {
                             System.out.println("Invalid operation input");
                         }
                     }
+
                 } else if (userType == 2) {
                     boolean runRestaurant = true;
 
@@ -182,30 +191,37 @@ public class OPfood {
                                     if (action == 1) {
                                         restaurant.browseMenu(restaurantName);
                                         restaurant.addMenu();
-                                    } else if (action == 2) {
+                                    } 
+                                    else if (action == 2) {
                                         restaurant.browseMenu(restaurantName);
                                         System.out.print("Enter item ID to be updated: ");
                                         String itemID = scanner.nextLine();
                                         restaurant.updateMenu(itemID);
-                                    } else if (action == 3) {
+                                    } 
+                                    else if (action == 3) {
                                         restaurant.browseMenu(restaurantName);
                                         System.out.print("Enter item ID to be deleted: ");
                                         String itemID = scanner.nextLine();
                                         restaurant.deleteMenu(itemID);
-                                    } else if (action == 4) {
+                                    } 
+                                    else if (action == 4) {
                                         restaurant.browseMenu(restaurantName);
-                                    } else {
+                                    } 
+                                    else {
                                         System.out.println("Invalid action input");
                                     }
                                 }
-                            } else {
+                            } 
+                            else {
                                 System.out.println("Invalid username or password");
                             }
-                        } else {
+                        } 
+                        else {
                             System.out.println("Invalid operation input");
                         }
                     }
-                } else {
+                } 
+                else {
                     System.out.println("Invalid User type entered");
                 }
             }
