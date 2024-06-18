@@ -155,9 +155,8 @@ public class OPfood{
                     String loginUserName = scanner.nextLine();
                     System.out.print("Enter Password for login: ");
                     String loginPassword = scanner.nextLine();
-                  
-
                     Restaurant restaurant = new Restaurant(null, null);
+                    
                     if (restaurant.login(userType, loginUserName, loginPassword)) {
                         String restaurantName;
                         File file = new File("RestaurantDetail.txt");
@@ -218,7 +217,9 @@ public class OPfood{
                 }
             }
             
-        } catch (Exception e) {
+            catch (Exception e) {
             e.printStackTrace();
-        }
+            }
     }
+}
+
