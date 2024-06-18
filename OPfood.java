@@ -10,7 +10,7 @@ public class OPfood {
             while (runProgram) {
                 System.out.print("Enter User Type (1 : Customer, 2 : Restaurant): ");
                 int userType = scanner.nextInt();
-                scanner.nextLine(); // Consume newline left-over
+                scanner.nextLine(); 
 
                 if (userType == 1) {
                     boolean runCustomer = true;
@@ -18,7 +18,7 @@ public class OPfood {
                     while (runCustomer) {
                         System.out.print("Enter Operation (1 : Register, 2 : Login): ");
                         int operation = scanner.nextInt();
-                        scanner.nextLine(); // Consume newline left-over
+                        scanner.nextLine(); 
 
                         // Customer registration
                         if (operation == 1) {
@@ -58,7 +58,7 @@ public class OPfood {
 
                                 System.out.print("Enter the number of the restaurant: ");
                                 int restaurantChoice = scanner.nextInt();
-                                scanner.nextLine(); // Consume newline left-over
+                                scanner.nextLine(); 
 
                                 String restaurantName = "";
                                 switch (restaurantChoice) {
@@ -77,13 +77,13 @@ public class OPfood {
                                 while (runAction) {
                                     System.out.print("Enter Action (1 : Add item to cart , 2 : View Cart , 3 : View Order History, 4 : Logout): ");
                                     int action = scanner.nextInt();
-                                    scanner.nextLine(); // Consume newline left-over
+                                    scanner.nextLine(); 
 
                                     if (action == 1) {
                                         customer.browseMenu(restaurantName);
-                                        System.out.print("Enter item name to add to cart: ");
+                                        System.out.print("Enter item id to add to cart: ");
                                         String item = scanner.nextLine();
-                                        customer.addToCart(item);
+                                        customer.addToCart(item, restaurantName);
                                     } 
                                     else if (action == 2) {
                                         customer.viewCart();
@@ -92,7 +92,7 @@ public class OPfood {
                                         while (runCartAction) {
                                             System.out.print("Enter cart action (1 : Delete cart item ,  2 : Place Order): ");
                                             int cartAction = scanner.nextInt();
-                                            scanner.nextLine(); // Consume newline left-over
+                                            scanner.nextLine();
 
                                             if (cartAction == 1) {
                                                 System.out.print("Enter item name to remove from cart: ");
@@ -139,7 +139,7 @@ public class OPfood {
                     while (runRestaurant) {
                         System.out.print("Enter Operation (1 : Register, 2 : Login): ");
                         int operation = scanner.nextInt();
-                        scanner.nextLine(); // Consume newline left-over
+                        scanner.nextLine(); 
 
                         // Restaurant registration
                         if (operation == 1) {
@@ -186,7 +186,7 @@ public class OPfood {
                                 while (runAction) {
                                     System.out.print("Enter Action (1 : Add menu , 2 : Update menu , 3 : Delete menu, 4 : Browse Menu): ");
                                     int action = scanner.nextInt();
-                                    scanner.nextLine(); // Consume newline left-over
+                                    scanner.nextLine(); 
 
                                     if (action == 1) {
                                         restaurant.browseMenu(restaurantName);

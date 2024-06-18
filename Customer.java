@@ -29,6 +29,7 @@ public class Customer extends User implements Orderable {
         try (FileWriter writer = new FileWriter("CustomerDetail.txt", true)) {
             writer.write(userID + ","+ userName + "," + password + "," + custName + "," + email + "," + phoneNumber + "," + birthDay + "\n");
             System.out.println("Customer Registration Successful!");
+            System.out.println();
         } 
         catch (IOException e) {
             System.out.println("An error occurred during registration.");
@@ -36,16 +37,35 @@ public class Customer extends User implements Orderable {
         }
     }
 
-    public void addToCart(MenuItem item) {
-        cart.add(item);
+    public void addToCart(String itemId, String restaurantName) {
+        try (Scanner scanner = new Scanner(new File(restaurantName + ".txt"))) {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] details = line.split(",");
+                if (details[0].equals(itemId)) {
+                    MenuItem item = new MenuItem(details[0], details[1], details[2], Double.parseDouble(details[3]));
+                    cart.add(item);
+                    System.out.println("Added to cart");
+                    return;
+                }
+            }
+            System.out.println("Item ID not found.");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public ArrayList<MenuItem> viewCart() {
         return cart;
     }
 
-    public void removeFromCart(MenuItem item) {
-        cart.remove(item);
+    public void removeFromCart(String itemId) {
+        boolean itemRemoved = cart.removeIf(item -> item.getItemID().equals(itemId));
+        if (itemRemoved) {
+            System.out.println("Removed item with ID: " + itemId);
+        } else {
+            System.out.println("Item ID not found in cart.");
+        }
     }
 
     public ArrayList<Order> viewOrderHistory() {
