@@ -6,6 +6,7 @@ import java.util.UUID;
 public class Restaurant extends User implements Orderable {
     private String restaurantName;
     private String address;
+    private ArrayList<Order> restaurantOrders;
 
     public Restaurant(String restaurantName, String address) {
         this.userType = 2;
@@ -95,7 +96,7 @@ public class Restaurant extends User implements Orderable {
     }
 
     public void viewOrder(String restaurantName) {
-    ArrayList<Order> restaurantOrders = Order.getOrdersForRestaurant(restaurantName);
+    restaurantOrders = Order.getOrdersForRestaurant(restaurantName);
     if (!restaurantOrders.isEmpty()) {
         for (Order order : restaurantOrders) {
             System.out.println("Order ID: " + order.getOrderID());
