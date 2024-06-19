@@ -16,6 +16,10 @@ public class Restaurant extends User implements Orderable {
         this.orders = new ArrayList<>();
     }
 
+    public String getName(){
+        return restaurantName;
+    }
+
     @Override
     public void register() {
         try (FileWriter writer = new FileWriter("RestaurantDetail.txt", true)) {
@@ -51,59 +55,6 @@ public class Restaurant extends User implements Orderable {
         }
         input.close();
     }
-
-    public void updateMenu(String itemID) {
-        File file = new File(this.restaurantName + ".txt");
-        if (!file.exists()) {
-            System.out.println("Restaurant menu file not found!");
-            return;
-        }
-
-        ArrayList<String> menuLines = new ArrayList<>();
-        try (Scanner scanner = new Scanner(file)) {
-            while (scanner.hasNextLine()) {
-                menuLines.add(scanner.nextLine());
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred while reading the menu.");
-            e.printStackTrace();
-            return;
-        }
-
-        boolean itemFound = false;
-        for (int i = 0; i < menuLines.size(); i++) {
-            String[] menuDetails = menuLines.get(i).split(",");
-            if (menuDetails[0].equals(itemID)) {
-                itemFound = true;
-                try(Scanner input = new Scanner(System.in)){
-                System.out.println("Enter new item name:");
-                String newItemName = input.nextLine();
-                System.out.println("Enter new description:");
-                String newDescription = input.nextLine();
-                System.out.println("Enter new price:");
-                double newPrice = input.nextDouble();
-
-                menuLines.set(i, itemID + "," + newItemName + "," + newDescription + "," + newPrice);
-                break;}
-            }
-        }
-
-        if (itemFound) {
-            // try with resource to close at the end
-            try (FileWriter writer = new FileWriter(this.restaurantName + ".txt")) {
-                for (String line : menuLines) {
-                    writer.write(line + "\n");
-                }
-                System.out.println("Menu item updated.");
-            } catch (IOException e) {
-                System.out.println("An error occurred while updating the menu.");
-                e.printStackTrace();
-            }
-        } else {
-            System.out.println("Menu item not found with ID: " + itemID);
-        }
-    }
-
 
     public void deleteMenu(String itemID) {
         File inputFile = new File(this.restaurantName + ".txt");
@@ -148,27 +99,34 @@ public class Restaurant extends User implements Orderable {
         }
     }
 
-
-    public Order viewOrder(String orderID) {
+    public void viewOrder(String restaurantName) {
+        boolean hasOrders = false;
         for (Order order : orders) {
-            if (order.getOrderID().equals(orderID)) {
-                return order;
+            if (order.getRestaurantName().equals(restaurantName)) {
+                hasOrders = true;
+                System.out.println("Order ID: " + order.getOrderID());
+                for (MenuItem item : order.getItems()) {
+                    System.out.println("Ordered item: " + item.getItemName() + ", Price: " + item.getPrice());
+                }
+                System.out.println("Total Order Amount: " + order.calculateTotalAmount());
+                System.out.println();
             }
         }
-        System.out.println("Order not found with ID: " + orderID);
-        return null;
+        if (!hasOrders) {
+            System.out.println("No order!");
+        }
     }
 
     public void browseMenu(String restaurantName) {
-        File file = new File(this.restaurantName + ".txt"); 
+        File file = new File(restaurantName + ".txt"); 
         if (!file.exists()) {
             System.out.println("Restaurant menu file not found!");
             return;
         }
     
         try (Scanner scanner = new Scanner(file)) {
-            System.out.println("Menu for " + this.restaurantName + ":");
-            System.out.println("Restaurant Address " + ":" + this.address);
+            System.out.println("-------------------- Menu for " + restaurantName + " --------------------");
+            System.out.println("-------------------- Restaurant Address " + ": " + address + " --------------------");
     
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();

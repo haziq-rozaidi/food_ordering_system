@@ -3,18 +3,23 @@ import java.util.ArrayList;
 public class Order{
     private String orderID;
     private String orderStatus;
-    private double totalAmount;
+    private String restaurantName;
     private ArrayList<MenuItem> items;
-
-    public Order(ArrayList<MenuItem> items) {
-        this.orderID = generateOrderID();
-        this.orderStatus = "";
-        this.items = items;
-        this.totalAmount = calculateTotalAmount();
-    }
+    private static ArrayList<Order> orders = new ArrayList<>();
 
     private String generateOrderID() {
         return "OD" + System.currentTimeMillis();
+    }
+
+    public Order(ArrayList<MenuItem> items, String restaurantName) {
+        this.orderID = generateOrderID();
+        this.restaurantName = restaurantName;
+        this.orderStatus = "";
+        this.items = items;
+    }
+
+    public static void addOrder(Order order) {
+        orders.add(order);
     }
 
     public double calculateTotalAmount() {
@@ -25,16 +30,16 @@ public class Order{
         return total;
     }
 
+    public String getRestaurantName() {
+        return restaurantName;
+    }
+
     public String getOrderID() {
         return orderID;
     }
 
     public String getOrderStatus() {
         return orderStatus;
-    }
-
-    public double getTotalAmount() {
-        return totalAmount;
     }
 
     public ArrayList<MenuItem> getItems() {

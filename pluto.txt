@@ -5,6 +5,8 @@
 5,Chicken Alfredo,Fettuccine with grilled chicken,13.99
 6,Vegetable Stir-Fry,Fresh vegetables with teriyaki sauce,10.50
 7,New York Cheesecake,Rich and graham cracker crust,6.75
-8,Mango Smoothie,Mango, yogurt, honey,4.25
+8,Mango Smoothie,Mango yogurt and honey,4.25
 9,Loaded Nachos,Beef with cheese and salsa,9.99
-10,Chocolate Lava Cake,Molten chocolate center,7.50
+10,Chocolate Lava Cake,Molten chocolate center,8.5
+11,aaa,aaa,2.99
+12,ggg,ggg,3.88

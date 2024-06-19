@@ -112,7 +112,7 @@ public class OPfood {
                                             } 
                                             else if (cartAction == 2) {
                                                 System.out.println();
-                                                customer.placeOrder();
+                                                customer.placeOrder(restaurantName);
                                                 runCartAction = false;
                                             } 
                                             else {
@@ -189,10 +189,11 @@ public class OPfood {
                             String loginUserName = scanner.nextLine();
                             System.out.print("Enter Password for login: ");
                             String loginPassword = scanner.nextLine();
-                            Restaurant restaurant = new Restaurant(null, null);
+                            Restaurant restaurant = new Restaurant("","");
 
                             if (restaurant.login(userType, loginUserName, loginPassword)) {
                                 String restaurantName = null;
+                                String address = null;
                                 File file = new File("RestaurantDetail.txt");
                                 try (Scanner fileScanner = new Scanner(file)) {
                                     while (fileScanner.hasNextLine()) {
@@ -200,6 +201,8 @@ public class OPfood {
                                         String[] details = line.split(",");
                                         if (details[1].equals(loginUserName) && details[2].equals(loginPassword)) {
                                             restaurantName = details[3];
+                                            address = details[4];
+                                            restaurant = new Restaurant(restaurantName, address);
                                             break;
                                         }
                                     }
@@ -210,39 +213,40 @@ public class OPfood {
                                 boolean runAction = true;
                                 while (runAction) {
                                     System.out.println();
-                                    System.out.print("Enter Action (1 : Add menu , 2 : Update menu , 3 : Delete menu, 4 : Browse Menu , 5 : View Order): ");
-                                    int action = scanner.nextInt();
-                                    scanner.nextLine(); 
+                                    System.out.print("Enter Action (1 : Add menu , 2 : Delete menu, 3 : Browse Menu , 4 : View Order , 5 : Logout): ");
+                                    int restaurantAction = scanner.nextInt();
+                                    scanner.nextLine();
 
-                                    if (action == 1) {
+                                    if (restaurantAction == 1) {
                                         System.out.println();
                                         restaurant.browseMenu(restaurantName);
+                                        System.out.println();
                                         restaurant.addMenu();
-                                    } 
-                                    else if (action == 2) {
+                                    }
+                                    else if (restaurantAction == 2) {
                                         System.out.println();
                                         restaurant.browseMenu(restaurantName);
-                                        System.out.print("Enter item ID to be updated: ");
-                                        String itemID = scanner.nextLine();
-                                        restaurant.updateMenu(itemID);
-                                    } 
-                                    else if (action == 3) {
                                         System.out.println();
-                                        restaurant.browseMenu(restaurantName);
                                         System.out.print("Enter item ID to be deleted: ");
                                         String itemID = scanner.nextLine();
                                         restaurant.deleteMenu(itemID);
                                     } 
-                                    else if (action == 4) {
+                                    else if (restaurantAction == 3) {
                                         System.out.println();
                                         restaurant.browseMenu(restaurantName);
                                     } 
                                     //////////////////////////////// error
-                                    else if (action == 5) {
+                                    else if (restaurantAction == 4) {
                                         System.out.println();
-                                        System.out.print("Enter order ID: ");
-                                        String orderID = scanner.nextLine();
-                                        restaurant.viewOrder(orderID);
+                                        System.out.print("Enter restaurantName: ");
+                                        String restName = scanner.nextLine();
+                                        restaurant.viewOrder(restName);
+                                    }
+                                    else if (restaurantAction == 5) {
+                                        System.out.println();
+                                        System.out.println("Logging out....");
+                                        runAction = false;
+                                        runRestaurant = false;
                                     }
                                     else {
                                         System.out.println();

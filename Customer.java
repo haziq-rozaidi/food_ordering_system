@@ -11,6 +11,7 @@ public class Customer extends User implements Orderable {
     private ArrayList<MenuItem> cart;
     private ArrayList<Order> orderHistory;
 
+
     public Customer(String custName, String email, String phoneNumber, String birthDay) {
         this.userType = 1;
         //generates a unique identifier
@@ -85,16 +86,18 @@ public class Customer extends User implements Orderable {
     public ArrayList<Order> viewOrderHistory() {
         return orderHistory;
     }
-
-    public void placeOrder() {
-        Order newOrder = new Order(new ArrayList<>(cart));
-        if(!cart.isEmpty()){
+    
+    public void placeOrder(String restaurantName) {
+        Order newOrder = new Order(new ArrayList<>(cart), restaurantName);
+        
+        if (!cart.isEmpty()) {
             orderHistory.add(newOrder);
             cart.clear();
             newOrder.placeOrder();
             System.out.println(newOrder.getOrderStatus());
-        }
-        else if (cart.isEmpty()){
+            Order.addOrder(newOrder); 
+        } 
+        else {
             newOrder.noOrder();
             System.out.println(newOrder.getOrderStatus());
         }
