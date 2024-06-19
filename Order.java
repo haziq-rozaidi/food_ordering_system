@@ -5,9 +5,24 @@ public class Order{
     private String orderStatus;
     private String restaurantName;
     private ArrayList<MenuItem> items;
+    private static ArrayList<Order> orders = new ArrayList<>(); //shared arraylist between customer and restaurant
 
     private String generateOrderID() {
         return "OD" + System.currentTimeMillis();
+    }
+    
+    public static void addOrder(Order order) {
+        orders.add(order);
+    }
+
+    public static ArrayList<Order> getOrdersForRestaurant(String restaurantName) {
+        ArrayList<Order> restaurantOrders = new ArrayList<>();
+        for (Order order : orders) {
+            if (order.getRestaurantName().equals(restaurantName)) {
+                restaurantOrders.add(order);
+            }
+        }
+        return restaurantOrders;
     }
 
     public Order(ArrayList<MenuItem> items, String restaurantName) {

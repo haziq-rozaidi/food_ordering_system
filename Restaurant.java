@@ -6,14 +6,12 @@ import java.util.UUID;
 public class Restaurant extends User implements Orderable {
     private String restaurantName;
     private String address;
-    private ArrayList<Order> orders;
 
     public Restaurant(String restaurantName, String address) {
         this.userType = 2;
         this.userID = UUID.randomUUID().toString();
         this.restaurantName = restaurantName;
         this.address = address;
-        this.orders = new ArrayList<>();
     }
 
     public String getName(){
@@ -97,22 +95,20 @@ public class Restaurant extends User implements Orderable {
     }
 
     public void viewOrder(String restaurantName) {
-        boolean hasOrders = false;
-        for (Order order : orders) {
-            if (order.getRestaurantName().equals(restaurantName)) {
-                hasOrders = true;
-                System.out.println("Order ID: " + order.getOrderID());
-                for (MenuItem item : order.getItems()) {
-                    System.out.println("Ordered item: " + item.getItemName() + ", Price: " + item.getPrice());
-                }
-                System.out.println("Total Order Amount: " + order.calculateTotalAmount());
-                System.out.println();
+    ArrayList<Order> restaurantOrders = Order.getOrdersForRestaurant(restaurantName);
+    if (!restaurantOrders.isEmpty()) {
+        for (Order order : restaurantOrders) {
+            System.out.println("Order ID: " + order.getOrderID());
+            for (MenuItem item : order.getItems()) {
+                System.out.println("Ordered item: " + item.getItemName() + ", Price: " + item.getPrice());
             }
+            System.out.println("Total Order Amount: " + order.calculateTotalAmount());
+            System.out.println();
         }
-        if (!hasOrders) {
-            System.out.println("No order!");
-        }
+    } else {
+        System.out.println("No order");
     }
+}
 
     public void browseMenu(String restaurantName) {
         File file = new File(restaurantName + ".txt"); 

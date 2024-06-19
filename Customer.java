@@ -95,6 +95,7 @@ public class Customer extends User implements Orderable {
             cart.clear();
             newOrder.placeOrder();
             System.out.println(newOrder.getOrderStatus());
+            Order.addOrder(newOrder);  
         } 
         else {
             newOrder.noOrder();
