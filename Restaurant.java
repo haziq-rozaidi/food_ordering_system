@@ -30,10 +30,10 @@ public class Restaurant extends User implements Orderable {
     public void addMenu() {
         Scanner input = new Scanner(System.in);
 
-        System.out.print("Enter item ID:");
+        System.out.print("Enter item ID: ");
         String itemID = input.nextLine();
 
-        System.out.print("Enter item name:");
+        System.out.print("Enter item name: ");
         String itemName = input.nextLine();
 
         System.out.print("Enter item description: ");

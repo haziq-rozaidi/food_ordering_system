@@ -29,7 +29,6 @@ public class Customer extends User implements Orderable {
         try (FileWriter writer = new FileWriter("CustomerDetail.txt", true)) {
             writer.write(userID + ","+ userName + "," + password + "," + custName + "," + email + "," + phoneNumber + "," + birthDay + "\n");
             System.out.println("Customer Registration Successful!");
-            System.out.println("\n\n");
         } 
         catch (IOException e) {
             System.out.println("An error occurred during registration.");
@@ -74,8 +73,10 @@ public class Customer extends User implements Orderable {
         else {
             boolean itemRemoved = cart.removeIf(item -> item.getItemID().equals(itemId));
                 if (itemRemoved) {
+                    System.out.println();
                     System.out.println("Item removed!");
                 } else {
+                    System.out.println();
                     System.out.println("Item ID not found in cart.");
                 }
         }
