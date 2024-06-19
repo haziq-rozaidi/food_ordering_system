@@ -1,7 +1,3 @@
------------------------------------------
--- Number,Food Name, Desciption, Price --
------------------------------------------
-
 1,Classic Burger,Beef patty with lettuce and tomato,8.99
 2,Margherita Pizza,Tomato sauce with basil and mozzarella,12.50
 3,Grilled Salmon,Lemon butter with sauce and vegetables,16.75

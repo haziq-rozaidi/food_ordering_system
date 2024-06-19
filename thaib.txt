@@ -1,9 +1,5 @@
------------------------------------------
--- Number,Food Name, Desciption, Price --
------------------------------------------
-
 1,Pad Thai,Rice noodles with shrimp and peanuts,12.95
-2,Fajitas Platter,Steak/chicken with peppers and onions,14.99
+2,Fajitas Platter,Steak chicken with peppers and onions,14.99
 3,Sushi Combo,Nigiri and maki rolls,18.75
 4,Vegetarian Lasagna,Pasta with marinara and vegetables,11.50
 5,Fish and Chips,Beer-battered cod with french fries,13.25

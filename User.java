@@ -19,6 +19,7 @@ public abstract class User {
                     String[] details = line.split(",");
                     if (details[1].equals(userName) && details[2].equals(password)) {
                         System.out.println("Customer login successful!");
+                        System.out.println("\n\n");
                         return true;
                     }
                 }

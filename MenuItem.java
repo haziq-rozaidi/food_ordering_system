@@ -26,4 +26,9 @@ public class MenuItem{
     public double getPrice() {
         return price;
     }
+
+    @Override
+    public String toString() {
+        return "Item ID: " + itemID + ", Name: " + itemName + ", Description: " + description + ", Price: " + price;
+    }
 }

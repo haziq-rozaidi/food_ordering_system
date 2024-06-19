@@ -29,7 +29,7 @@ public class Customer extends User implements Orderable {
         try (FileWriter writer = new FileWriter("CustomerDetail.txt", true)) {
             writer.write(userID + ","+ userName + "," + password + "," + custName + "," + email + "," + phoneNumber + "," + birthDay + "\n");
             System.out.println("Customer Registration Successful!");
-            System.out.println();
+            System.out.println("\n\n");
         } 
         catch (IOException e) {
             System.out.println("An error occurred during registration.");
@@ -55,14 +55,22 @@ public class Customer extends User implements Orderable {
         }
     }
 
-    public ArrayList<MenuItem> viewCart() {
-        return cart;
+    public void viewCart() {
+        if (cart.isEmpty()) {
+            System.out.println("Cart is empty.");
+        } 
+        else {
+            System.out.println("Items in you cart:");
+            for (MenuItem item : cart) {
+                System.out.println(item);
+            }
+        }
     }
 
     public void removeFromCart(String itemId) {
         boolean itemRemoved = cart.removeIf(item -> item.getItemID().equals(itemId));
         if (itemRemoved) {
-            System.out.println("Removed item with ID: " + itemId);
+            System.out.println("Item removed");
         } else {
             System.out.println("Item ID not found in cart.");
         }
@@ -76,6 +84,8 @@ public class Customer extends User implements Orderable {
         Order newOrder = new Order(new ArrayList<>(cart));
         orderHistory.add(newOrder);
         cart.clear();
+        newOrder.placeOrder();
+        System.out.println(newOrder.getOrderStatus());
     }
 
     public void browseMenu(String restaurantName) {
@@ -86,7 +96,7 @@ public class Customer extends User implements Orderable {
         }
 
         try (Scanner scanner = new Scanner(file)) {
-            System.out.println("Menu for " + restaurantName + ":");
+            System.out.println("-------------------- Menu for " + restaurantName + " --------------------");
 
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
@@ -99,6 +109,7 @@ public class Customer extends User implements Orderable {
                     System.out.println("Invalid menu entry: " + line);
                 }
             }
+            System.out.println("\n\n");
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred while reading the menu");
             e.printStackTrace();

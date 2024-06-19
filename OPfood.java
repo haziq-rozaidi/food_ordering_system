@@ -3,11 +3,12 @@ import java.util.Scanner;
 
 public class OPfood {
     public static void main(String[] args) {
-        System.out.println("WELCOME TO OP FOOD ORDERING SYSTEM\n");
+        System.out.println("-------------------- WELCOME TO OP FOOD ORDERING SYSTEM --------------------\n");
         try (Scanner scanner = new Scanner(System.in)) {
             boolean runProgram = true;
 
             while (runProgram) {
+                System.out.println("\n\n");
                 System.out.print("Enter User Type (1 : Customer, 2 : Restaurant): ");
                 int userType = scanner.nextInt();
                 scanner.nextLine(); 
@@ -52,7 +53,7 @@ public class OPfood {
 
                             if (customer.login(userType, loginUserName, loginPassword)) {
                                 // Choose restaurant
-                                System.out.println("Choose a Restaurant");
+                                System.out.println("Choose a Restaurant:");
                                 System.out.println("1. thaib");
                                 System.out.println("2. pluto");
 
@@ -75,6 +76,7 @@ public class OPfood {
 
                                 boolean runAction = true;
                                 while (runAction) {
+                                    System.out.println("\n\n");
                                     System.out.print("Enter Action (1 : Add item to cart , 2 : View Cart , 3 : View Order History, 4 : Logout): ");
                                     int action = scanner.nextInt();
                                     scanner.nextLine(); 
@@ -90,12 +92,13 @@ public class OPfood {
 
                                         boolean runCartAction = true;
                                         while (runCartAction) {
-                                            System.out.print("Enter cart action (1 : Delete cart item ,  2 : Place Order): ");
+                                            System.out.println("\n\n");
+                                            System.out.print("Enter cart action (1 : Delete cart item , 2 : Place Order): ");
                                             int cartAction = scanner.nextInt();
                                             scanner.nextLine();
 
                                             if (cartAction == 1) {
-                                                System.out.print("Enter item name to remove from cart: ");
+                                                System.out.print("Enter item id to remove from cart: ");
                                                 String item = scanner.nextLine();
                                                 customer.removeFromCart(item);
                                             } 
@@ -113,11 +116,13 @@ public class OPfood {
                                             for (MenuItem item : order.getItems()) {
                                                 System.out.println("Ordered item: " + item.getItemName() + ", Price: " + item.getPrice());
                                             }
+                                            System.out.println("Total Order Amount: " + order.calculateTotalAmount());
                                         }
                                     } 
                                     else if (action == 4) {
-                                        System.out.println("Logging out");
+                                        System.out.println("Logging out....");
                                         runAction = false;
+                                        runCustomer = false;
                                     } 
                                     else {
                                         System.out.println("Invalid action input");

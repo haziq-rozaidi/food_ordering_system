@@ -10,14 +10,14 @@ public class Order{
         this.orderID = generateOrderID();
         this.orderStatus = "";
         this.items = items;
-        this.totalAmount = calculateTotalAmount(items);
+        this.totalAmount = calculateTotalAmount();
     }
 
     private String generateOrderID() {
         return "OD" + System.currentTimeMillis();
     }
 
-    public double calculateTotalAmount(ArrayList<MenuItem> items) {
+    public double calculateTotalAmount() {
         double total = 0.00;
         for (MenuItem item : items) {
             total += item.getPrice();
@@ -42,11 +42,11 @@ public class Order{
     }
 
     public void placeOrder() {
-        this.orderStatus = "Placed Successfully";
+        this.orderStatus = "Placed Successfully!!!";
     }
 
     public void cancelOrder() {
-        this.orderStatus = "Cancelled Successfully";
+        this.orderStatus = "Cancelled Successfully!!!";
     }
 }
 
