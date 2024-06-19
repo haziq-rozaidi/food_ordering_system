@@ -32,28 +32,30 @@ public class Restaurant extends User implements Orderable {
     }
 
     public void addMenu() {
-        Scanner input = new Scanner(System.in);
+        try (Scanner input = new Scanner(System.in)) { //try-with-resources
+            System.out.print("Enter item ID: ");
+            String itemID = input.nextLine();
 
-        System.out.print("Enter item ID: ");
-        String itemID = input.nextLine();
+            System.out.print("Enter item name: ");
+            String itemName = input.nextLine();
 
-        System.out.print("Enter item name: ");
-        String itemName = input.nextLine();
+            System.out.print("Enter item description: ");
+            String description = input.nextLine();
 
-        System.out.print("Enter item description: ");
-        String description = input.nextLine();
+            System.out.print("Enter item price: ");
+            double price = Double.parseDouble(input.nextLine());
 
-        System.out.print("Enter item price: ");
-        double price = input.nextDouble();
-
-        try (FileWriter writer = new FileWriter(this.restaurantName + ".txt", true)) {
-            writer.write(itemID + "," + itemName + "," + description + "," + price + "\n");
-            System.out.println("Menu item added");
-        } catch (IOException e) {
-            System.out.println("An error occurred while adding the menu item");
+            try (FileWriter writer = new FileWriter(this.restaurantName + ".txt", true)) {
+                writer.write(itemID + "," + itemName + "," + description + "," + price + "\n");
+                System.out.println("Menu item added");
+            } catch (IOException e) {
+                System.out.println("An error occurred while adding the menu item");
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            System.out.println("Error in input.");
             e.printStackTrace();
         }
-        input.close();
     }
 
     public void deleteMenu(String itemID) {

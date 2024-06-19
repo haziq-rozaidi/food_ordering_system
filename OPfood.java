@@ -1,5 +1,5 @@
 import java.io.*;
-import java.util.Scanner;
+import java.util.*;
 
 public class OPfood {
     public static void main(String[] args) {
@@ -214,14 +214,13 @@ public class OPfood {
                                 while (runAction) {
                                     System.out.println();
                                     System.out.print("Enter Action (1 : Add menu , 2 : Delete menu, 3 : Browse Menu , 4 : View Order , 5 : Logout): ");
-                                    int restaurantAction = scanner.nextInt();
-                                    scanner.nextLine();
+                                    int restaurantAction = Integer.parseInt(scanner.nextLine());  
 
                                     if (restaurantAction == 1) {
                                         System.out.println();
                                         restaurant.browseMenu(restaurantName);
                                         System.out.println();
-                                        restaurant.addMenu();
+                                        restaurant.addMenu();  
                                     }
                                     else if (restaurantAction == 2) {
                                         System.out.println();
