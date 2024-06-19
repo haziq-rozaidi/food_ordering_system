@@ -5,7 +5,6 @@ public class Order{
     private String orderStatus;
     private String restaurantName;
     private ArrayList<MenuItem> items;
-    private static ArrayList<Order> orders = new ArrayList<>();
 
     private String generateOrderID() {
         return "OD" + System.currentTimeMillis();
@@ -16,10 +15,6 @@ public class Order{
         this.restaurantName = restaurantName;
         this.orderStatus = "";
         this.items = items;
-    }
-
-    public static void addOrder(Order order) {
-        orders.add(order);
     }
 
     public double calculateTotalAmount() {

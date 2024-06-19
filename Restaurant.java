@@ -31,8 +31,7 @@ public class Restaurant extends User implements Orderable {
         }
     }
 
-    public void addMenu() {
-        try (Scanner input = new Scanner(System.in)) { //try-with-resources
+    public void addMenu(Scanner input) {
             System.out.print("Enter item ID: ");
             String itemID = input.nextLine();
 
@@ -52,10 +51,6 @@ public class Restaurant extends User implements Orderable {
                 System.out.println("An error occurred while adding the menu item");
                 e.printStackTrace();
             }
-        } catch (Exception e) {
-            System.out.println("Error in input.");
-            e.printStackTrace();
-        }
     }
 
     public void deleteMenu(String itemID) {
