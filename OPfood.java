@@ -3,12 +3,12 @@ import java.util.Scanner;
 
 public class OPfood {
     public static void main(String[] args) {
-        System.out.println("-------------------- WELCOME TO OP FOOD ORDERING SYSTEM --------------------\n");
+        System.out.println("-------------------- WELCOME TO OP FOOD ORDERING SYSTEM --------------------");
         try (Scanner scanner = new Scanner(System.in)) {
             boolean runProgram = true;
 
             while (runProgram) {
-                System.out.println("\n\n");
+                System.out.println();
                 System.out.print("Enter User Type (1 : Customer, 2 : Restaurant): ");
                 int userType = scanner.nextInt();
                 scanner.nextLine(); 
@@ -17,12 +17,14 @@ public class OPfood {
                     boolean runCustomer = true;
 
                     while (runCustomer) {
+                        System.out.println();
                         System.out.print("Enter Operation (1 : Register, 2 : Login): ");
                         int operation = scanner.nextInt();
                         scanner.nextLine(); 
 
                         // Customer registration
                         if (operation == 1) {
+                            System.out.println();
                             System.out.print("Enter Username: ");
                             String userName = scanner.nextLine();
                             System.out.print("Enter Password: ");
@@ -45,6 +47,7 @@ public class OPfood {
 
                         // Customer login
                         else if (operation == 2) {
+                            System.out.println();
                             System.out.print("Enter Username for login: ");
                             String loginUserName = scanner.nextLine();
                             System.out.print("Enter Password for login: ");
@@ -53,6 +56,7 @@ public class OPfood {
 
                             if (customer.login(userType, loginUserName, loginPassword)) {
                                 // Choose restaurant
+                                System.out.println();
                                 System.out.println("Choose a Restaurant:");
                                 System.out.println("1. thaib");
                                 System.out.println("2. pluto");
@@ -76,13 +80,15 @@ public class OPfood {
 
                                 boolean runAction = true;
                                 while (runAction) {
-                                    System.out.println("\n\n");
+                                    System.out.println();
                                     System.out.print("Enter Action (1 : Add item to cart , 2 : View Cart , 3 : View Order History, 4 : Logout): ");
                                     int action = scanner.nextInt();
                                     scanner.nextLine(); 
 
                                     if (action == 1) {
+                                        System.out.println();
                                         customer.browseMenu(restaurantName);
+                                        System.out.println();
                                         System.out.print("Enter item id to add to cart: ");
                                         String item = scanner.nextLine();
                                         customer.addToCart(item, restaurantName);
@@ -92,12 +98,13 @@ public class OPfood {
 
                                         boolean runCartAction = true;
                                         while (runCartAction) {
-                                            System.out.println("\n\n");
+                                            System.out.println();
                                             System.out.print("Enter cart action (1 : Delete cart item , 2 : Place Order): ");
                                             int cartAction = scanner.nextInt();
                                             scanner.nextLine();
 
                                             if (cartAction == 1) {
+                                                System.out.println();
                                                 System.out.print("Enter item id to remove from cart: ");
                                                 String item = scanner.nextLine();
                                                 customer.removeFromCart(item);
@@ -142,12 +149,14 @@ public class OPfood {
                     boolean runRestaurant = true;
 
                     while (runRestaurant) {
+                        System.out.println();
                         System.out.print("Enter Operation (1 : Register, 2 : Login): ");
                         int operation = scanner.nextInt();
                         scanner.nextLine(); 
 
                         // Restaurant registration
                         if (operation == 1) {
+                            System.out.println();
                             System.out.print("Enter Username: ");
                             String userName = scanner.nextLine();
                             System.out.print("Enter Password: ");
@@ -165,6 +174,7 @@ public class OPfood {
 
                         // Restaurant login
                         else if (operation == 2) {
+                            System.out.println();
                             System.out.print("Enter Username for login: ");
                             String loginUserName = scanner.nextLine();
                             System.out.print("Enter Password for login: ");
@@ -189,27 +199,32 @@ public class OPfood {
 
                                 boolean runAction = true;
                                 while (runAction) {
+                                    System.out.println();
                                     System.out.print("Enter Action (1 : Add menu , 2 : Update menu , 3 : Delete menu, 4 : Browse Menu): ");
                                     int action = scanner.nextInt();
                                     scanner.nextLine(); 
 
                                     if (action == 1) {
+                                        System.out.println();
                                         restaurant.browseMenu(restaurantName);
                                         restaurant.addMenu();
                                     } 
                                     else if (action == 2) {
+                                        System.out.println();
                                         restaurant.browseMenu(restaurantName);
                                         System.out.print("Enter item ID to be updated: ");
                                         String itemID = scanner.nextLine();
                                         restaurant.updateMenu(itemID);
                                     } 
                                     else if (action == 3) {
+                                        System.out.println();
                                         restaurant.browseMenu(restaurantName);
                                         System.out.print("Enter item ID to be deleted: ");
                                         String itemID = scanner.nextLine();
                                         restaurant.deleteMenu(itemID);
                                     } 
                                     else if (action == 4) {
+                                        System.out.println();
                                         restaurant.browseMenu(restaurantName);
                                     } 
                                     else {

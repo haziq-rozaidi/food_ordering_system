@@ -42,11 +42,11 @@ public class Order{
     }
 
     public void placeOrder() {
-        this.orderStatus = "Placed Successfully!!!";
+        this.orderStatus = "Order placed successfully!";
     }
 
-    public void cancelOrder() {
-        this.orderStatus = "Cancelled Successfully!!!";
+    public void noOrder() {
+        this.orderStatus = "No order placed successfully!";
     }
 }
 

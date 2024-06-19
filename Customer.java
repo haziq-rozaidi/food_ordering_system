@@ -68,11 +68,16 @@ public class Customer extends User implements Orderable {
     }
 
     public void removeFromCart(String itemId) {
-        boolean itemRemoved = cart.removeIf(item -> item.getItemID().equals(itemId));
-        if (itemRemoved) {
-            System.out.println("Item removed");
-        } else {
-            System.out.println("Item ID not found in cart.");
+        if (cart.isEmpty()){
+            System.out.println("Cart is empty.");
+        }
+        else {
+            boolean itemRemoved = cart.removeIf(item -> item.getItemID().equals(itemId));
+                if (itemRemoved) {
+                    System.out.println("Item removed!");
+                } else {
+                    System.out.println("Item ID not found in cart.");
+                }
         }
     }
 
@@ -82,10 +87,16 @@ public class Customer extends User implements Orderable {
 
     public void placeOrder() {
         Order newOrder = new Order(new ArrayList<>(cart));
-        orderHistory.add(newOrder);
-        cart.clear();
-        newOrder.placeOrder();
-        System.out.println(newOrder.getOrderStatus());
+        if(!cart.isEmpty()){
+            orderHistory.add(newOrder);
+            cart.clear();
+            newOrder.placeOrder();
+            System.out.println(newOrder.getOrderStatus());
+        }
+        else if (cart.isEmpty()){
+            newOrder.noOrder();
+            System.out.println(newOrder.getOrderStatus());
+        }
     }
 
     public void browseMenu(String restaurantName) {
@@ -109,7 +120,6 @@ public class Customer extends User implements Orderable {
                     System.out.println("Invalid menu entry: " + line);
                 }
             }
-            System.out.println("\n\n");
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred while reading the menu");
             e.printStackTrace();
