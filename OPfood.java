@@ -173,7 +173,7 @@ public class OPfood {
                             String password = scanner.nextLine();
                             System.out.print("Enter Restaurant Name: ");
                             String restaurantName = scanner.nextLine();
-                            System.out.print("Enter Address: ");
+                            System.out.print("Enter Address without comma: ");
                             String address = scanner.nextLine();
 
                             Restaurant restaurant = new Restaurant(restaurantName, address);

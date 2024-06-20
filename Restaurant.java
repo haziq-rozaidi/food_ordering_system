@@ -22,8 +22,17 @@ public class Restaurant extends User implements Orderable {
     @Override
     public void register() {
         try (FileWriter writer = new FileWriter("RestaurantDetail.txt", true)) {
-            writer.write(userID + ","+ userName + "," + password + "," + restaurantName + "," + address + "\n");
+            writer.write(userID + "," + userName + "," + password + "," + restaurantName + "," + address + "\n");
             System.out.println("Restaurant registration successful!");
+
+            // Create a new file for the restaurant
+            String newRestaurantName = restaurantName;
+            File restaurantFile = new File(newRestaurantName + ".txt");
+            if (restaurantFile.createNewFile()) {
+                System.out.println("New File created for " + newRestaurantName);
+            } else {
+                System.out.println("File already exists for: " + newRestaurantName);
+            }
         } catch (IOException e) {
             System.out.println("An error occurred during registration.");
             e.printStackTrace();
