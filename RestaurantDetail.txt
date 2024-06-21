@@ -1,2 +1,3 @@
 8f548bc1-00d3-4523-8add-0679dfbf4f2b,thaib,thaib123,thaib,20 Jalan Sri Kulai 81000 Kulai Johor
 9eb726e2-a6b5-4c09-b7da-aac6530777f7,pluto,pluto123,pluto,80 Jalan Senai 83000 Senai Johor
+ec4698bf-9b41-4986-bae1-887aa0212a59,happyland,happyland123,happyland,20 Jalan Suria 31000 Malaysia
