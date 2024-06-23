@@ -235,7 +235,6 @@ public class OPfood {
                                         System.out.println();
                                         restaurant.browseMenu(restaurantName);
                                     } 
-                                    //////////////////////////////// error
                                     else if (restaurantAction == 4) {
                                         System.out.println();
                                         System.out.print("Enter restaurantName: ");
